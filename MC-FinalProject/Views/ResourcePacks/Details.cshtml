@@ -1,0 +1,43 @@
+﻿@model MC_FinalProject.Models.ResourcePack
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Title" style="max-height: 350px; width: 100%; object-fit: cover;">
+            }
+            else
+            {
+                <div class="bg-secondary text-white d-flex align-items-center justify-content-center rounded shadow" style="height: 250px;">
+                    <span>Няма налична снимка</span>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold">@Model.Title</h1>
+            <h4 class="text-muted mb-3">Автор: <span class="text-info">@Model.Author</span></h4>
+
+            <p class="lead">@Model.Description</p>
+
+            <hr />
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>Категория:</strong> <span class="badge bg-primary">@Model.ResourceCategory.Name</span></div>
+                <div class="col-md-3"><strong>Feature:</strong> <span class="badge bg-success">@Model.ResourceFeature.Name</span></div>
+                <div class="col-md-3"><strong>Резолюция:</strong> <span class="badge bg-warning text-dark">@Model.ResourceResolution.Name</span></div>
+                <div class="col-md-3"><strong>Версия:</strong> <span class="badge bg-secondary">@Model.GameVersion.VersionNumber</span></div>
+            </div>
+
+            <div class="d-flex gap-3 mt-4">
+                <a href="@Model.DownloadUrl" target="_blank" class="btn btn-lg btn-danger px-4">Изтегли ресурспака</a>
+                <a asp-action="Index" class="btn btn-lg btn-outline-secondary">Назад към списъка</a>
+            </div>
+        </div>
+    </div>
+</div>

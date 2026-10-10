@@ -14,6 +14,10 @@ namespace MC_FinalProject.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<GameVersion> GameVersions { get; set; }
         public DbSet<ModLoader> ModLoaders { get; set; }
+        public DbSet<ResourcePack> ResourcePacks { get; set; }
+        public DbSet<ResourceCategory> ResourceCategories { get; set; }
+        public DbSet<ResourceFeature> ResourceFeatures { get; set; }
+        public DbSet<ResourceResolution> ResourceResolutions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +44,24 @@ namespace MC_FinalProject.Data
                 gameVersions.Add(new GameVersion { Id = i + 1, VersionNumber = versionNames[i] });
             }
             modelBuilder.Entity<GameVersion>().HasData(gameVersions);
+
+            string[] resCategories = { "Combat", "Cursed", "Decoration", "Modded", "Realistic", "Simplistic", "Themed", "Tweaks", "Utility", "Vanilla Like" };
+            var rcList = new List<ResourceCategory>();
+            for (int i = 0; i < resCategories.Length; i++)
+                rcList.Add(new ResourceCategory { Id = i + 1, Name = resCategories[i] });
+            modelBuilder.Entity<ResourceCategory>().HasData(rcList);
+
+            string[] resFeatures = { "Audio", "Blocks", "Core Shaders", "Entities", "Environment", "Equipment", "Fonts", "GUI", "Items", "Locale", "Models" };
+            var rfList = new List<ResourceFeature>();
+            for (int i = 0; i < resFeatures.Length; i++)
+                rfList.Add(new ResourceFeature { Id = i + 1, Name = resFeatures[i] });
+            modelBuilder.Entity<ResourceFeature>().HasData(rfList);
+
+            string[] resResolutions = { "8x or lower", "16x", "32x", "48x", "64x", "128x", "256x", "512x or higher" };
+            var rrList = new List<ResourceResolution>();
+            for (int i = 0; i < resResolutions.Length; i++)
+                rrList.Add(new ResourceResolution { Id = i + 1, Name = resResolutions[i] });
+            modelBuilder.Entity<ResourceResolution>().HasData(rrList);
         }
     }
 }

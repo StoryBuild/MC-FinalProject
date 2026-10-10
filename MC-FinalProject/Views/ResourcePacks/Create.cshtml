@@ -1,0 +1,87 @@
+﻿@model MC_FinalProject.Models.ResourcePack
+
+@{
+    ViewData["Title"] = "Добави ресурспак";
+}
+
+<h2>Добавяне на ресурспак</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Title" class="control-label">Заглавие</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Author" class="control-label">Автор</label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label">Описание</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageUrl" class="control-label">URL към картинка (по избор)</label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DownloadUrl" class="control-label">Линк за изтегляне (CurseForge)</label>
+                <input asp-for="DownloadUrl" class="form-control" />
+                <span asp-validation-for="DownloadUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ResourceCategoryId" class="control-label">Категория</label>
+                <select asp-for="ResourceCategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
+                    <option value="">-- Избери Категория --</option>
+                </select>
+                <span asp-validation-for="ResourceCategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ResourceFeatureId" class="control-label">Екстра (Feature)</label>
+                <select asp-for="ResourceFeatureId" class="form-control" asp-items="@(new SelectList(ViewBag.Features, "Id", "Name"))">
+                    <option value="">-- Избери Feature --</option>
+                </select>
+                <span asp-validation-for="ResourceFeatureId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ResourceResolutionId" class="control-label">Резолюция</label>
+                <select asp-for="ResourceResolutionId" class="form-control" asp-items="@(new SelectList(ViewBag.Resolutions, "Id", "Name"))">
+                    <option value="">-- Избери Резолюция --</option>
+                </select>
+                <span asp-validation-for="ResourceResolutionId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="GameVersionId" class="control-label">Версия на играта</label>
+                <select asp-for="GameVersionId" class="form-control" asp-items="@(new SelectList(ViewBag.GameVersions, "Id", "VersionNumber"))">
+                    <option value="">-- Избери Версия --</option>
+                </select>
+                <span asp-validation-for="GameVersionId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="submit" value="Запази" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
