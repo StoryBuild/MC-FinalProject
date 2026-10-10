@@ -32,5 +32,18 @@ namespace MC_FinalProject.Models
         public int GameVersionId { get; set; }
         [ForeignKey(nameof(GameVersionId))]
         public GameVersion GameVersion { get; set; } = null!;
+
+        [Required(ErrorMessage = "Линкът за изтегляне е задължителен")]
+        [Url(ErrorMessage = "Въведете валиден URL адрес (напр. https://curseforge.com/...)")]
+        public string DownloadUrl { get; set; } = null!;
+
+        [Required(ErrorMessage = "Изберете среда (Client/Server/Both)")]
+        [MaxLength(20)]
+        public string Environment { get; set; } = null!;
+
+        [Required]
+        public int ModLoaderId { get; set; }
+        [ForeignKey(nameof(ModLoaderId))]
+        public ModLoader ModLoader { get; set; } = null!;
     }
 }
