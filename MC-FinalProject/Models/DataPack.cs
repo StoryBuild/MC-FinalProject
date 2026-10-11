@@ -8,23 +8,23 @@ namespace MC_FinalProject.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Заглавието е задължително")]
+        [Required(ErrorMessage = "Title is required")]
         [MaxLength(100)]
         public string Title { get; set; } = null!;
 
-        [Required(ErrorMessage = "Описанието е задължително")]
+        [Required(ErrorMessage = "Description is required")]
         [MaxLength(500)]
         public string Description { get; set; } = null!;
 
-        [Required(ErrorMessage = "Авторът е задължителен")]
+        [Required(ErrorMessage = "Author is required")]
         public string Author { get; set; } = null!;
 
         public int Downloads { get; set; }
 
         public string? ImageUrl { get; set; }
 
-        [Required(ErrorMessage = "Линкът за изтегляне е задължителен")]
-        [Url(ErrorMessage = "Въведете валиден URL адрес")]
+        [Required(ErrorMessage = "Download URL is required")]
+        [Url(ErrorMessage = "Enter a valid URL")]
         public string DownloadUrl { get; set; } = null!;
 
         [Required]

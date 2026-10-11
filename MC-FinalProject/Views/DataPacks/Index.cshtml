@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<MC_FinalProject.Models.DataPack>
 
 @{
-    ViewData["Title"] = "Каталог с DataPacks";
+    ViewData["Title"] = "Datapacks Catalog";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Разгледай DataPacks</h2>
-    <a asp-action="Create" class="btn btn-success">Добави нов dataPack</a>
+    <h2>Browse Datapacks</h2>
+    <a asp-action="Create" class="btn btn-success">Add New Datapack</a>
 </div>
 
 <div class="row">
@@ -24,9 +24,9 @@
                 <div class="card-footer d-flex justify-content-between align-items-center border-secondary">
                     <small>@item.DataPackCategory.Name | @item.GameVersion.VersionNumber</small>
                     <div>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Детайли</a>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Редакция</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Изтрий</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Details</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
                     </div>
                 </div>
             </div>

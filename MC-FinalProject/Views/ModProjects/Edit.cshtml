@@ -1,10 +1,10 @@
 ﻿@model MC_FinalProject.Models.ModProject
 
 @{
-    ViewData["Title"] = "Редактирай мод";
+    ViewData["Title"] = "Edit Mod";
 }
 
-<h2>Редактиране на мод</h2>
+<h2>Edit Mod</h2>
 <hr />
 
 <div class="row">
@@ -14,43 +14,43 @@
             <input type="hidden" asp-for="Id" />
 
             <div class="form-group mb-3">
-                <label asp-for="Title" class="control-label">Заглавие</label>
+                <label asp-for="Title" class="control-label">Title</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Author" class="control-label">Автор</label>
+                <label asp-for="Author" class="control-label">Author</label>
                 <input asp-for="Author" class="form-control" />
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Description" class="control-label">Описание</label>
+                <label asp-for="Description" class="control-label">Description</label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="ImageUrl" class="control-label">URL към снимка</label>
+                <label asp-for="ImageUrl" class="control-label">Image URL</label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="DownloadUrl" class="control-label">CurseForge Линк</label>
+                <label asp-for="DownloadUrl" class="control-label">Download URL</label>
                 <input asp-for="DownloadUrl" class="form-control" />
                 <span asp-validation-for="DownloadUrl" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="CategoryId" class="control-label">Категория</label>
+                <label asp-for="CategoryId" class="control-label">Category</label>
                 <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="GameVersionId" class="control-label">Версия на играта</label>
+                <label asp-for="GameVersionId" class="control-label">Game Version</label>
                 <select asp-for="GameVersionId" class="form-control" asp-items="@(new SelectList(ViewBag.GameVersions, "Id", "VersionNumber"))"></select>
                 <span asp-validation-for="GameVersionId" class="text-danger"></span>
             </div>
@@ -62,7 +62,7 @@
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Environment" class="control-label">Среда</label>
+                <label asp-for="Environment" class="control-label">Environment</label>
                 <select asp-for="Environment" class="form-control">
                     <option value="Client">Client</option>
                     <option value="Server">Server</option>
@@ -72,8 +72,8 @@
             </div>
 
             <div class="form-group mb-3">
-                <input type="submit" value="Запази промените" class="btn btn-warning" />
-                <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+                <input type="submit" value="Save Changes" class="btn btn-warning" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>

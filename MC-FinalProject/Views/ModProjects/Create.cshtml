@@ -1,10 +1,10 @@
 ﻿@model MC_FinalProject.Models.ModProject
 
 @{
-    ViewData["Title"] = "Добави нов мод";
+    ViewData["Title"] = "Add New Mod";
 }
 
-<h2>Добавяне на мод</h2>
+<h2>Add Mod</h2>
 <hr />
 
 <div class="row">
@@ -13,46 +13,46 @@
             <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="form-group mb-3">
-                <label asp-for="Title" class="control-label">Заглавие на мода</label>
+                <label asp-for="Title" class="control-label">Mod Title</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Author" class="control-label">Автор</label>
+                <label asp-for="Author" class="control-label">Author</label>
                 <input asp-for="Author" class="form-control" />
                 <span asp-validation-for="Author" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Description" class="control-label">Описание</label>
+                <label asp-for="Description" class="control-label">Description</label>
                 <textarea asp-for="Description" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="ImageUrl" class="control-label">URL към картинка (по избор)</label>
+                <label asp-for="ImageUrl" class="control-label">Image URL (optional)</label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="DownloadUrl" class="control-label">CurseForge Линк за изтегляне</label>
+                <label asp-for="DownloadUrl" class="control-label">Download URL</label>
                 <input asp-for="DownloadUrl" class="form-control" placeholder="https://..." />
                 <span asp-validation-for="DownloadUrl" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="CategoryId" class="control-label">Категория</label>
+                <label asp-for="CategoryId" class="control-label">Category</label>
                 <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
-                    <option value="">-- Избери Категория --</option>
+                    <option value="">-- Select Category --</option>
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="GameVersionId" class="control-label">Версия на играта</label>
+                <label asp-for="GameVersionId" class="control-label">Game Version</label>
                 <select asp-for="GameVersionId" class="form-control" asp-items="@(new SelectList(ViewBag.GameVersions, "Id", "VersionNumber"))">
-                    <option value="">-- Избери Версия --</option>
+                    <option value="">-- Select Version --</option>
                 </select>
                 <span asp-validation-for="GameVersionId" class="text-danger"></span>
             </div>
@@ -65,9 +65,9 @@
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="Environment" class="control-label">Среда (Environment)</label>
+                <label asp-for="Environment" class="control-label">Environment</label>
                 <select asp-for="Environment" class="form-control">
-                    <option value="">-- Избери Среда --</option>
+                    <option value="">-- Select Environment --</option>
                     <option value="Client">Client</option>
                     <option value="Server">Server</option>
                     <option value="Both">Both</option>
@@ -76,8 +76,8 @@
             </div>
 
             <div class="form-group mb-3">
-                <input type="submit" value="Запази" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>
