@@ -1,0 +1,25 @@
+﻿@model MC_FinalProject.Models.DataPack
+
+@{
+    ViewData["Title"] = "Изтрий Datapack";
+}
+
+<h2 class="text-danger">Сигурни ли сте, че искате да изтриете този Datapack?</h2>
+
+<div class="card bg-dark text-white p-4 mt-3">
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Автор:</dt>
+        <dd class="col-sm-10">@Model.Author</dd>
+
+        <dt class="col-sm-2">Категория:</dt>
+        <dd class="col-sm-10">@Model.DataPackCategory.Name</dd>        
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Изтрий завинаги" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </form>
+</div>

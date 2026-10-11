@@ -136,6 +136,168 @@ namespace MC_FinalProject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MC_FinalProject.Models.DataPack", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DataPackCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("DownloadUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Downloads")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GameVersionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataPackCategoryId");
+
+                    b.HasIndex("GameVersionId");
+
+                    b.ToTable("DataPacks");
+                });
+
+            modelBuilder.Entity("MC_FinalProject.Models.DataPackCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DataPackCategories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Adventure"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Cursed"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Decoration"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Economy"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Equipment"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Food"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Game Mechanics"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Library"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Magic"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Management"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Minigame"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Mobs"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Optimization"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Social"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Storage"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Technology"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Transportation"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Utility"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "World Generation"
+                        });
+                });
+
             modelBuilder.Entity("MC_FinalProject.Models.GameVersion", b =>
                 {
                     b.Property<int>("Id")
@@ -1025,6 +1187,25 @@ namespace MC_FinalProject.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MC_FinalProject.Models.DataPack", b =>
+                {
+                    b.HasOne("MC_FinalProject.Models.DataPackCategory", "DataPackCategory")
+                        .WithMany("DataPacks")
+                        .HasForeignKey("DataPackCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MC_FinalProject.Models.GameVersion", "GameVersion")
+                        .WithMany()
+                        .HasForeignKey("GameVersionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DataPackCategory");
+
+                    b.Navigation("GameVersion");
+                });
+
             modelBuilder.Entity("MC_FinalProject.Models.ModProject", b =>
                 {
                     b.HasOne("MC_FinalProject.Models.Category", "Category")
@@ -1090,6 +1271,11 @@ namespace MC_FinalProject.Migrations
             modelBuilder.Entity("MC_FinalProject.Models.Category", b =>
                 {
                     b.Navigation("ModProjects");
+                });
+
+            modelBuilder.Entity("MC_FinalProject.Models.DataPackCategory", b =>
+                {
+                    b.Navigation("DataPacks");
                 });
 
             modelBuilder.Entity("MC_FinalProject.Models.GameVersion", b =>
